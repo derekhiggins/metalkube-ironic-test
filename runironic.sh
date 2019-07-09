@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+
+# a test
+
 /usr/lib/rabbitmq/bin/rabbitmq-server > /var/log/rabbit.out 2>&1 &
 /usr/bin/python2 /usr/bin/ironic-conductor > /var/log/ironic-conductor.out 2>&1 &
 /usr/bin/python2 /usr/bin/ironic-api > /var/log/ironic-api.out 2>&1 &

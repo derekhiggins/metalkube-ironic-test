@@ -16,7 +16,6 @@ done
 mkdir -p /shared/tftpboot
 mkdir -p /shared/html/images
 mkdir -p /shared/html/pxelinux.cfg
-mkdir -p /shared/log/dnsmasq
 
 # Copy files to shared mount
 cp /usr/share/ipxe/undionly.kpxe /usr/share/ipxe/ipxe.efi /shared/tftpboot
@@ -36,7 +35,5 @@ for port in 67 69 ; do
     fi
 done
 
-/usr/sbin/dnsmasq -d -q -C /etc/dnsmasq.conf 2>&1 | tee /shared/log/dnsmasq/dnsmasq.log &
 /bin/runhealthcheck "dnsmasq" &>/dev/null &
-sleep infinity
-
+exec /usr/sbin/dnsmasq -d -q -C /etc/dnsmasq.conf
